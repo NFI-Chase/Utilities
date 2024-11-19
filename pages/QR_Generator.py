@@ -6,12 +6,12 @@ from io import BytesIO
 from PIL import Image, ImageSequence
 from amzqr import amzqr
 st.set_page_config(
-   page_title="QR Code Generator (Experimental)",
+   page_title="QR Code Generator",
    page_icon="",
    layout="wide",
    initial_sidebar_state="expanded",
 )
-st.title("QR Code Generator")
+st.title("QR Code Generator (Experimental)")
 st.markdown("*I created this page to generate QR codes and GIFs. You can upload an image and generate a QR code with the image embedded in it. You can also generate a GIF with the uploaded images.*")
 def remake_qrcode(qr_img, crop_size):
     new_img = qr_img.crop((crop_size, crop_size, qr_img.size[0] - crop_size, qr_img.size[1] - crop_size)) 
