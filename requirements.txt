@@ -1,7 +1,5 @@
 pandas
 altair
 streamlit
-datetime
 imageio
-base64
-io
+amzqr
