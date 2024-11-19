@@ -36,35 +36,42 @@ def decrypt_image(encrypted_image):
 # Streamlit app
 st.title("Secret Message Maker")
 
-# Encryption section
-st.header("Encryption")
-message = st.text_area("Enter a message to encrypt")
-if st.button("Encrypt Message"):
-    encrypted_message = encrypt_message(message)
-    st.text_area("Encrypted Message", encrypted_message.decode())
+option = st.radio("Select an option", ("Encrypt", "Decrypt"))
 
-uploaded_image = st.file_uploader("Choose an image to encrypt", type=["png", "jpg", "jpeg"])
-if uploaded_image is not None:
-    image = Image.open(uploaded_image)
-    st.image(image, caption="Uploaded Image", use_container_width=True)
-    if st.button("Encrypt Image"):
-        encrypted_image = encrypt_image(image)
-        st.text_area("Encrypted Image (Base64)", encrypted_image.decode())
+if option == "Encrypt":
+    # Encryption section
+    st.header("Encryption")
+    message = st.text_area("Enter a message to encrypt")
+    if st.button("Encrypt Message"):
+        encrypted_message = encrypt_message(message)
+        st.text_area("Encrypted Message", encrypted_message.decode())
 
-# Decryption section
-st.header("Decryption")
-encrypted_message_input = st.text_area("Enter an encrypted message to decrypt")
-if st.button("Decrypt Message"):
-    try:
-        decrypted_message = decrypt_message(encrypted_message_input.encode())
-        st.text_area("Decrypted Message", decrypted_message)
-    except Exception as e:
-        st.error(f"Decryption failed: {e}")
+    uploaded_image = st.file_uploader("Choose an image to encrypt", type=["png", "jpg", "jpeg"])
+    if uploaded_image is not None:
+        if uploaded_image.size > 2 * 1024 * 1024:  # Check if the file size is greater than 2MB
+            st.error("File size should be less than 2MB")
+        else:
+            image = Image.open(uploaded_image)
+            st.image(image, caption="Uploaded Image", use_container_width=True)
+            if st.button("Encrypt Image"):
+                encrypted_image = encrypt_image(image)
+                st.text_area("Encrypted Image (Base64)", encrypted_image.decode())
 
-encrypted_image_input = st.text_area("Enter an encrypted image (Base64) to decrypt")
-if st.button("Decrypt Image"):
-    try:
-        decrypted_image = decrypt_image(encrypted_image_input.encode())
-        st.image(decrypted_image, caption="Decrypted Image", use_container_width=True)
-    except Exception as e:
-        st.error(f"Decryption failed: {e}")
+elif option == "Decrypt":
+    # Decryption section
+    st.header("Decryption")
+    encrypted_message_input = st.text_area("Enter an encrypted message to decrypt")
+    if st.button("Decrypt Message"):
+        try:
+            decrypted_message = decrypt_message(encrypted_message_input.encode())
+            st.text_area("Decrypted Message", decrypted_message)
+        except Exception as e:
+            st.error(f"Decryption failed: {e}")
+
+    encrypted_image_input = st.text_area("Enter an encrypted image (Base64) to decrypt")
+    if st.button("Decrypt Image"):
+        try:
+            decrypted_image = decrypt_image(encrypted_image_input.encode())
+            st.image(decrypted_image, caption="Decrypted Image", use_container_width=True)
+        except Exception as e:
+            st.error(f"Decryption failed: {e}")
