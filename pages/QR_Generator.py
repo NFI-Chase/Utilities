@@ -6,7 +6,7 @@ from io import BytesIO
 from PIL import Image, ImageSequence
 from amzqr import amzqr
 st.set_page_config(
-   page_title="QR Code Generator",
+   page_title="QR Code Generator (Experimental)",
    page_icon="",
    layout="wide",
    initial_sidebar_state="expanded",
@@ -84,18 +84,8 @@ if qr_type:
                 # save_dir="."
             )
             st.image(saved_qr_name, caption="QR Code for the GIF")
-        os.remove('gifResult.gif')
-        os.remove(saved_qr_name)
-
-
-
-            # version, level, qr_name = amzqr.run(words=qr_destination_link,version=qr_version,level='H',picture="gifResult.gif", colorized=isColor,contrast=1.0,brightness=1.0,save_name=saved_qr_name)
-            # qrLoad = Image.open(saved_qr_name)
-            # data_url, data = load_qrcode_to_base64(qrLoad, 'gif')
-            # st.markdown(f'</br> <img src="data:image/gif;base64,{data_url}" alt="Output QR">',unsafe_allow_html=True,)
-            # st.download_button('Download QR Code', data=data, file_name=gif_name, mime='image/gif' )
-            # if qrLoad : 
-            #     qrLoad.close()    
+        os.remove(gif_name)
+        os.remove(saved_qr_name)  
         
 
 
