@@ -2,6 +2,12 @@ import streamlit as st
 from cryptography.fernet import Fernet
 from PIL import Image
 import io
+st.set_page_config(
+   page_title="Secrets Message",
+   page_icon="🔒",
+   layout="wide",
+   initial_sidebar_state="expanded",
+)
 
 # Generate a key for encryption and decryption
 # You must use this key for both encryption and decryption
