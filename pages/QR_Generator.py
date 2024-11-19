@@ -55,7 +55,6 @@ if qr_type:
         col1, col2 = st.columns( [0.5, 0.5])
         with col1:
             #do GIF
-            st.markdown('<p class="title3">GIF Result</p>', unsafe_allow_html=True)  
             # frames = [Image.open(img) for img in uploaded_files]
             gif_name = 'gifResult.gif'
             images[0].save(gif_name, format='GIF', append_images=images[1:], save_all=True, duration=gif_transition_duration, loop=0)
@@ -64,8 +63,7 @@ if qr_type:
                 btn = st.download_button(label="Download GIF",
                     data=file, file_name=gif_name, mime="image/gif")
         with col2:
-            # do QR
-            st.markdown('<p class="title3">QR Code</p>', unsafe_allow_html=True)  
+            # do QR  
             if qr_type == 'Automation Color' and qr_destination_link and qr_version:
                 isColor = True
             elif qr_type == 'Automation BW' and qr_destination_link and qr_version:
