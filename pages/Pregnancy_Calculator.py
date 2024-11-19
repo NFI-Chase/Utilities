@@ -137,10 +137,12 @@ def app():
         if last_menstral_date > datetime.now().date():
             st.error("The date of the last menstrual period cannot be in the future.")
             return
-        # else test if current date is greater than due date
         elif datetime.now().date() > due_date:
             st.error("The due date cannot be in the past.")
             return
+        summary_details_component(due_date, pregnancy_duration, last_menstral_date)
+        week_dates= create_pregnancy_timeline(last_menstral_date.strftime("%Y-%m-%d"))
+        st.dataframe(week_dates, hide_index=True, height=1475, use_container_width=True)
     elif radiobutton_calculate_by == "Conception Date":
         date_of_conception = st.date_input("Date of Conception")
         due_date = date_of_conception + timedelta(days=266)
