@@ -3,3 +3,4 @@ altair
 streamlit
 imageio
 amzqr
+cryptography
