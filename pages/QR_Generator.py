@@ -59,7 +59,7 @@ if qr_type:
             # frames = [Image.open(img) for img in uploaded_files]
             gif_name = 'gifResult.gif'
             images[0].save(gif_name, format='GIF', append_images=images[1:], save_all=True, duration=gif_transition_duration, loop=0)
-            st.image(gif_name)
+            st.image(gif_name,caption="Generated GIF")
             with open(gif_name, "rb") as file:
                 btn = st.download_button(label="Download GIF",
                     data=file, file_name=gif_name, mime="image/gif")
@@ -83,7 +83,7 @@ if qr_type:
                 save_name=saved_qr_name,
                 # save_dir="."
             )
-            st.image(saved_qr_name, caption="QR Code for the GIF")
+            st.image(saved_qr_name, caption="Generated QR Code")
         os.remove(gif_name)
         os.remove(saved_qr_name)  
         
