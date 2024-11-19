@@ -154,5 +154,4 @@ def app():
         summary_details_component(due_date, pregnancy_duration, last_menstrual_period)
         week_dates= create_pregnancy_timeline(last_menstrual_period.strftime("%Y-%m-%d"))
         st.dataframe(week_dates, hide_index=True, height=1475, use_container_width=True)
-if __name__ == "__main__":
-    app()
+app()
