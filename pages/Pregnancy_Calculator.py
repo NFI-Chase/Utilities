@@ -106,9 +106,16 @@ def create_pregnancy_timeline(lmp_date_str, pregnancy_duration=280):
     df = pd.DataFrame(weeks)
     # Highlight the current week
     today = datetime.today().strftime("%Y-%m-%d")
-    df["Current Week"] = df.apply(lambda row: "You are HERE!!!" if row["Start Date"] <= today <= row["End Date"] else "", axis=1)
+    df["Current Week"] = df.apply(lambda row: "You are HERE!!!" if row["Start Date"] <= today <= row["End Date"] else ("✔️" if row["End Date"] < today else ""), axis=1)
+    df.at[df.index[-1], "Current Week"] = "💖💖💖💖💖💖  👶  💖💖💖💖💖💖"
     return df
-
+def highlight_row(row):
+    if 'You are HERE!!!' in row.values:
+        return ['background-color: green' for _ in row]
+    elif '✔️' in row.values:
+        return ['background-color: black' for _ in row]
+    else:
+        return ['' for _ in row]
 def get_summary_details_dataframe(due_date, pregnancy_duration, last_menstrual_period_date):
     data = {"Description": ["Conception Date","Due Date:", "Pregnancy Duration (Days): ", "Days Pregnant: ", "Weeks Pregnant: ", "Weeks until Due Date: ", "Days until Due Date:", "Pregnancy Completed ( % ): "],
             "Values": [last_menstrual_period_date.strftime("%Y-%m-%d"),due_date.strftime("%Y-%m-%d"), str(pregnancy_duration), str(calculate_days_preganant(last_menstrual_period_date)), str(calculate_weeks_pregnant(last_menstrual_period_date)), str(calculate_weeks_left(due_date)),str(calculate_days_left(due_date)),str(calculate_percentage_of_pregnancy_completed(last_menstrual_period_date, pregnancy_duration))]}
@@ -142,27 +149,40 @@ def app():
             return
         summary_details_component(due_date, pregnancy_duration, last_menstral_date)
         week_dates= create_pregnancy_timeline(last_menstral_date.strftime("%Y-%m-%d"))
-        st.dataframe(week_dates, hide_index=True, height=1475, use_container_width=True)
+        st.dataframe(week_dates.style.apply(highlight_row, axis=1), hide_index=True, height=1475, use_container_width=True)
     elif radiobutton_calculate_by == "Conception Date":
         date_of_conception = st.date_input("Date of Conception")
         due_date = date_of_conception + timedelta(days=266)
         last_menstral_date = date_of_conception - timedelta(days=14)
+        if last_menstral_date > datetime.now().date():
+            st.error("The date of the last menstrual period cannot be in the future.")
+            return
+        elif datetime.now().date() > due_date:
+            st.error("The due date cannot be in the past.")
+            return
         summary_details_component(due_date, pregnancy_duration, last_menstral_date)
         week_dates= create_pregnancy_timeline(last_menstral_date.strftime("%Y-%m-%d"))
-        st.dataframe(week_dates, hide_index=True, height=1475, use_container_width=True)
+        st.dataframe(week_dates.style.apply(highlight_row, axis=1), hide_index=True, height=1475, use_container_width=True)
     elif radiobutton_calculate_by == "IVF Transfer Date":
         date_of_ivf_transfer = st.date_input("Date of IVF Transfer")
         radiobutton_embryo_stage_options = ["Day 3", "Day 5"]
         radiobutton_embryo = st.radio("Embryo Stage days:", radiobutton_embryo_stage_options)
         due_date, last_menstral_date = calculate_ivf_last_menstrual_period(date_of_ivf_transfer, pregnancy_duration, radiobutton_embryo)
+        if last_menstral_date > datetime.now().date():
+            st.error("The date of the last menstrual period cannot be in the future.")
+            return
+        elif datetime.now().date() > due_date:
+            st.error("The due date cannot be in the past.")
+            return
         summary_details_component(due_date, pregnancy_duration, last_menstral_date)
         week_dates= create_pregnancy_timeline(last_menstral_date.strftime("%Y-%m-%d"))
-        st.dataframe(week_dates, hide_index=True, height=1475, use_container_width=True)
+        # st.dataframe(week_dates, hide_index=True, height=1475, use_container_width=True)
+        st.dataframe(week_dates.style.apply(highlight_row, axis=1), hide_index=True, height=1475, use_container_width=True)
     elif radiobutton_calculate_by == "Due Date":
         date_of_due_date = st.date_input("Date of Due Date")
         due_date = date_of_due_date
         last_menstrual_period =calculate_last_menstrual_period_by_due_date(due_date, pregnancy_duration)
         summary_details_component(due_date, pregnancy_duration, last_menstrual_period)
         week_dates= create_pregnancy_timeline(last_menstrual_period.strftime("%Y-%m-%d"))
-        st.dataframe(week_dates, hide_index=True, height=1475, use_container_width=True)
+        st.dataframe(week_dates.style.apply(highlight_row, axis=1), hide_index=True, height=1475, use_container_width=True)
 app()
