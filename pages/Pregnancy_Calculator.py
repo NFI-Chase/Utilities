@@ -107,7 +107,7 @@ def create_pregnancy_timeline(lmp_date_str, pregnancy_duration=280):
     # Highlight the current week
     today = datetime.today().strftime("%Y-%m-%d")
     df["Current Week"] = df.apply(lambda row: "You are HERE!!!" if row["Start Date"] <= today <= row["End Date"] else ("✔️" if row["End Date"] < today else ""), axis=1)
-    df.at[df.index[-1], "Current Week"] = "💖💖💖💖💖💖  👶  💖💖💖💖💖💖"
+    df.at[df.index[-1], "Current Week"] = "💖  👶  💖"
     return df
 def highlight_row(row):
     if 'You are HERE!!!' in row.values:
