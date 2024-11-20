@@ -45,7 +45,7 @@ def make_donut(input_response, input_text, input_color):
   return plot_bg + plot + text
 @st.cache_data
 def load_csv_data():
-    df = pd.read_csv("additional\detailed_pregnancy_weeks_with_symptoms.csv")
+    df = pd.read_csv(".//additional//detailed_pregnancy_weeks_with_symptoms.csv")
     return df
 pregnancy_weeks = lambda: load_csv_data()
 def get_week_details(df, week_number):
