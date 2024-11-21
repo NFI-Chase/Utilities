@@ -196,7 +196,7 @@ def app():
         with data_container:
             table, plot = st.columns(2)
             with table:
-                st.table(df)
+                st.dataframe(df, hide_index=True,use_container_width=True)
             with plot:
                 st.altair_chart(make_donut(calculate_percentage_of_pregnancy_completed(last_menstral_date, pregnancy_duration), 'Pregnancy Precentage Completed', 'red'), use_container_width=True)
         week_dates= create_pregnancy_timeline(last_menstral_date.strftime("%Y-%m-%d"), due_date.strftime("%Y-%m-%d"))
