@@ -100,19 +100,20 @@ def calculate_percentage_of_pregnancy_completed(last_menstrual_period_date, preg
     days_preganant = calculate_days_preganant(last_menstrual_period_date)
     percentage_of_pregnancy = (days_preganant / pregnancy_duration) * 100
     return round(percentage_of_pregnancy,2)
-def create_pregnancy_timeline(lmp_date_str, pregnancy_duration=280):
-    due_date = calculate_due_date_by_last_menstrual_period(datetime.strptime(lmp_date_str, "%Y-%m-%d"), pregnancy_duration)
-    # Create a list of weeks from the start of the pregnancy to the due date
+def create_pregnancy_timeline(last_menstral_date, due_date, pregnancy_duration=280):
+    st.write("Last Menstrual Date: ", last_menstral_date)
+    st.write("Due Date: ", due_date)
     weeks = []
-    current_date = datetime.strptime(lmp_date_str, "%Y-%m-%d")
-    week_number = 1
-    while current_date <= due_date:
+    due_date = datetime.strptime(due_date, "%Y-%m-%d")
+    last_menstral_date_str = datetime.strptime(last_menstral_date, "%Y-%m-%d")
+    week_number = 0
+    while last_menstral_date_str <= due_date:
         weeks.append({
             "Week Number": week_number,
-            "Start Date": current_date.strftime("%Y-%m-%d"),
-            "End Date": (current_date + timedelta(days=6)).strftime("%Y-%m-%d")
+            "Start Date": last_menstral_date_str.strftime("%Y-%m-%d"),
+            "End Date": (last_menstral_date_str + timedelta(days=6)).strftime("%Y-%m-%d")
         })
-        current_date += timedelta(days=7)
+        last_menstral_date_str += timedelta(days=7)
         week_number += 1
     # Create a DataFrame from the list of weeks
     df = pd.DataFrame(weeks)
@@ -129,12 +130,13 @@ def highlight_row(row):
     else:
         return ['' for _ in row]
 def get_summary_details_dataframe(due_date, pregnancy_duration, last_menstrual_period_date):
+    weeks_pregnant = str(calculate_weeks_pregnant(last_menstrual_period_date))
     data = {"Description": ["Conception Date","Due Date:", "Pregnancy Duration (Days): ", "Days Pregnant: ", "Weeks Pregnant: ", "Weeks until Due Date: ", "Days until Due Date:", "Pregnancy Completed ( % ): "],
-            "Values": [last_menstrual_period_date.strftime("%Y-%m-%d"),due_date.strftime("%Y-%m-%d"), str(pregnancy_duration), str(calculate_days_preganant(last_menstrual_period_date)), str(calculate_weeks_pregnant(last_menstrual_period_date)), str(calculate_weeks_left(due_date)),str(calculate_days_left(due_date)),str(calculate_percentage_of_pregnancy_completed(last_menstrual_period_date, pregnancy_duration))]}
+            "Values": [last_menstrual_period_date.strftime("%Y-%m-%d"),due_date.strftime("%Y-%m-%d"), str(pregnancy_duration), str(calculate_days_preganant(last_menstrual_period_date)), weeks_pregnant, str(calculate_weeks_left(due_date)),str(calculate_days_left(due_date)),str(calculate_percentage_of_pregnancy_completed(last_menstrual_period_date, pregnancy_duration))]}
     df = pd.DataFrame(data)
-    return df
+    return df, weeks_pregnant
 def summary_details_component(due_date, pregnancy_duration, last_menstrual_period_date):
-    df = get_summary_details_dataframe(due_date, pregnancy_duration, last_menstrual_period_date)
+    df, weeks_pregnant = get_summary_details_dataframe(due_date, pregnancy_duration, last_menstrual_period_date)
     data_container = st.container()
     with data_container:
         table, plot = st.columns(2)
@@ -142,12 +144,9 @@ def summary_details_component(due_date, pregnancy_duration, last_menstrual_perio
             st.table(df)
         with plot:
             st.altair_chart(make_donut(calculate_percentage_of_pregnancy_completed(last_menstrual_period_date, pregnancy_duration), 'Pregnancy Precentage Completed', 'red'), use_container_width=True)
-def get_current_week_details(df):
-    current_week_row = df[df["Current Week"] == "You are HERE!!!"]
-    if not current_week_row.empty:
-        current_week_number = current_week_row["Week Number"].values[0]
-        return get_week_details(pregnancy_weeks(), current_week_number)
-    return "You are not in any specific week."
+def get_current_week_details(weeks_pregnant):
+    weeks_pregnant_int = round(float(weeks_pregnant))
+    return get_week_details(pregnancy_weeks(), weeks_pregnant_int)
 def app():
     st.title("Pregnancy Calculator")
     st.markdown("*I created this page to help you calculate the due date of your baby. It's a simple tool that you can use to calculate the due date based on the Last Menstrual Period, Conception Date, IVF Transfer Date, or Due Date.*") 
@@ -192,11 +191,18 @@ def app():
         last_menstral_date =calculate_last_menstrual_period_by_due_date(due_date, pregnancy_duration)
     if due_date and pregnancy_duration and last_menstral_date:
         st.header("Pregnancy Summary")
-        summary_details_component(due_date, pregnancy_duration, last_menstral_date)
-        week_dates= create_pregnancy_timeline(last_menstral_date.strftime("%Y-%m-%d"))
+        df, weeks_pregnant = get_summary_details_dataframe(due_date, pregnancy_duration, last_menstral_date)
+        data_container = st.container()
+        with data_container:
+            table, plot = st.columns(2)
+            with table:
+                st.table(df)
+            with plot:
+                st.altair_chart(make_donut(calculate_percentage_of_pregnancy_completed(last_menstral_date, pregnancy_duration), 'Pregnancy Precentage Completed', 'red'), use_container_width=True)
+        week_dates= create_pregnancy_timeline(last_menstral_date.strftime("%Y-%m-%d"), due_date.strftime("%Y-%m-%d"))
         st.header("Your Journey")
         st.dataframe(week_dates.style.apply(highlight_row, axis=1), hide_index=True, height=1475, use_container_width=True)
         st.header("Current Week Details")
-        current_week_details = get_current_week_details(week_dates)
+        current_week_details = get_current_week_details(weeks_pregnant)
         st.dataframe(current_week_details, use_container_width=True)
 app()
