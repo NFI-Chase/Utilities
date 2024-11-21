@@ -146,6 +146,8 @@ def summary_details_component(due_date, pregnancy_duration, last_menstrual_perio
             st.altair_chart(make_donut(calculate_percentage_of_pregnancy_completed(last_menstrual_period_date, pregnancy_duration), 'Pregnancy Precentage Completed', 'red'), use_container_width=True)
 def get_current_week_details(weeks_pregnant):
     weeks_pregnant_int = round(float(weeks_pregnant))
+    if weeks_pregnant_int == 0:
+        weeks_pregnant_int = 1
     return get_week_details(pregnancy_weeks(), weeks_pregnant_int)
 def app():
     st.title("Pregnancy Calculator")
