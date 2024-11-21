@@ -4,3 +4,4 @@ streamlit
 imageio
 amzqr
 cryptography
+numpy

@@ -3,6 +3,7 @@ import pandas as pd
 import altair as alt
 from datetime import datetime, timedelta
 import pandas as pd
+import numpy as np
         
 st.set_page_config(
    page_title="Pregnancy Calculator",
@@ -46,6 +47,7 @@ def make_donut(input_response, input_text, input_color):
 @st.cache_data
 def load_csv_data():
     df = pd.read_csv(".//additional//detailed_pregnancy_weeks_with_symptoms.csv")
+    df.fillna('', inplace=True)
     df = df.astype(str)
     return df
 pregnancy_weeks = lambda: load_csv_data()
@@ -122,6 +124,7 @@ def create_pregnancy_timeline(last_menstral_date, due_date, pregnancy_duration=2
     pregnancy_weeks_df['Week Number'] = pregnancy_weeks_df['Week Number'].astype(int)
     # Merge with pregnancy_weeks on the "Week Number" column
     df = df.merge(pregnancy_weeks_df[['Week Number', 'Important Milestones']], on="Week Number", how="left")
+    df.fillna(' ', inplace=True)
     # Highlight the current week
     today = datetime.today().strftime("%Y-%m-%d")
     df["Current Week"] = df.apply(lambda row: "You are HERE!!!" if row["Start Date"] <= today <= row["End Date"] else ("✔️" if row["End Date"] < today else ""), axis=1)
