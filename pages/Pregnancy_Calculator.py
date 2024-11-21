@@ -46,12 +46,14 @@ def make_donut(input_response, input_text, input_color):
 @st.cache_data
 def load_csv_data():
     df = pd.read_csv(".//additional//detailed_pregnancy_weeks_with_symptoms.csv")
+    df = df.astype(str)
     return df
 pregnancy_weeks = lambda: load_csv_data()
 def get_week_details(df, week_number):
     if week_number < 1 or week_number > 40:
         return "Invalid week number. Please provide a week number between 1 and 40."
-    week_details = df[df["Week"] == week_number]
+    week_details = df[df["Week"] == str(week_number)]
+    print(week_details)
     return week_details.to_dict(orient="records")[0]
 def calculate_due_date_by_last_menstrual_period(date_of_last_menstrual_period, pregnancy_duration):
     due_date = date_of_last_menstrual_period + timedelta(days=pregnancy_duration)
@@ -101,8 +103,6 @@ def calculate_percentage_of_pregnancy_completed(last_menstrual_period_date, preg
     percentage_of_pregnancy = (days_preganant / pregnancy_duration) * 100
     return round(percentage_of_pregnancy,2)
 def create_pregnancy_timeline(last_menstral_date, due_date, pregnancy_duration=280):
-    st.write("Last Menstrual Date: ", last_menstral_date)
-    st.write("Due Date: ", due_date)
     weeks = []
     due_date = datetime.strptime(due_date, "%Y-%m-%d")
     last_menstral_date_str = datetime.strptime(last_menstral_date, "%Y-%m-%d")
