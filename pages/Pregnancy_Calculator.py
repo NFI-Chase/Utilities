@@ -51,9 +51,8 @@ def load_csv_data():
 pregnancy_weeks = lambda: load_csv_data()
 def get_week_details(df, week_number):
     if week_number < 1 or week_number > 40:
-        return "Invalid week number. Please provide a week number between 1 and 40."
-    week_details = df[df["Week"] == str(week_number)]
-    print(week_details)
+        return "Invalid Week Number. Please provide a Week Number between 1 and 40."
+    week_details = df[df["Week Number"] == str(week_number)]
     return week_details.to_dict(orient="records")[0]
 def calculate_due_date_by_last_menstrual_period(date_of_last_menstrual_period, pregnancy_duration):
     due_date = date_of_last_menstrual_period + timedelta(days=pregnancy_duration)
@@ -117,6 +116,12 @@ def create_pregnancy_timeline(last_menstral_date, due_date, pregnancy_duration=2
         week_number += 1
     # Create a DataFrame from the list of weeks
     df = pd.DataFrame(weeks)
+    # Ensure the 'Week Number' column is of the same type in both dataframes
+    df['Week Number'] = df['Week Number'].astype(int)
+    pregnancy_weeks_df = pregnancy_weeks()
+    pregnancy_weeks_df['Week Number'] = pregnancy_weeks_df['Week Number'].astype(int)
+    # Merge with pregnancy_weeks on the "Week Number" column
+    df = df.merge(pregnancy_weeks_df[['Week Number', 'Important Milestones']], on="Week Number", how="left")
     # Highlight the current week
     today = datetime.today().strftime("%Y-%m-%d")
     df["Current Week"] = df.apply(lambda row: "You are HERE!!!" if row["Start Date"] <= today <= row["End Date"] else ("✔️" if row["End Date"] < today else ""), axis=1)
