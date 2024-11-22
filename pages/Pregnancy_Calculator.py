@@ -247,6 +247,6 @@ def app():
         st.header("Current Week Details")
         current_week_details = get_current_week_details(weeks_pregnant)
         st.dataframe(current_week_details, use_container_width=True)
-        footer='<div class="footer">Developed with <b style="color:red";> ❤ </b> by Michael Strydom </br> Sponsor the Creator </br> <a href="https://paypal.me/michaelericstrydom" target="_blank">Michael Strydom</a></div>'
+        footer='<div class="footer">Developed with <b style="color:red";> ❤ </b> by EvoSoft </br> Sponsor the Creator </br> <a href="https://www.paypal.com/donate/?hosted_button_id=7A4P67BEPT29W" target="_blank">EvoSoft</a></div>'
         st.markdown(footer,unsafe_allow_html=True)
 app()
