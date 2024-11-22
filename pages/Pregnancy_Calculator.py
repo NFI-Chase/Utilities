@@ -9,7 +9,7 @@ st.set_page_config(
    page_title="Pregnancy Calculator",
    page_icon="🤰",
    layout="wide",
-   initial_sidebar_state="expanded",
+#    initial_sidebar_state="expanded",
 )
 def make_donut(input_response, input_text, input_color):
   chart_color = ['#27AE60', '#781F16']

@@ -9,7 +9,7 @@ st.set_page_config(
    page_title="QR Code Generator",
    page_icon="🔧",
    layout="wide",
-   initial_sidebar_state="expanded",
+#    initial_sidebar_state="expanded",
 )
 st.title("QR Code Generator (Experimental)")
 st.markdown("*I created this page to generate QR codes and GIFs. You can upload an image and generate a QR code with the image embedded in it. You can also generate a GIF with the uploaded images.*")

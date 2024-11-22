@@ -3,7 +3,7 @@ st.set_page_config(
    page_title="Evosoft Utilities",
    page_icon=":house:",
    layout="wide",
-   initial_sidebar_state="expanded",
+#    initial_sidebar_state="expanded",
 )
 def app():
     st.title("Utilities")
