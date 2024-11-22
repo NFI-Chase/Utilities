@@ -2,7 +2,18 @@ import streamlit as st
 from PIL import Image
 import io, os
 import datetime
-
+import pandas as pd
+@st.cache_data
+def local_css(file_name):
+    with open(file_name) as f: st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+local_css(".//resources//style.css")
+@st.cache_data
+def load_csv_data():
+    df = pd.read_csv(".//resources//detailed_pregnancy_weeks_with_symptoms.csv")
+    df.fillna('', inplace=True)
+    df = df.astype(str)
+    return df
+pregnancy_weeks = lambda: load_csv_data()
 def compress_image(image, quality):
     if image.mode == 'RGBA':
         image = image.convert('RGB')
@@ -36,3 +47,5 @@ if fileName:
                 file_name=file_root + "_Compressed_" + current_date +".jpg",
                 mime="image/jpeg"
             )
+footer='<div class="footer">Developed with <b style="color:red";> ❤ </b> by EvoSoft </br> Sponsor the Creator </br> <a href="https://www.paypal.com/donate/?hosted_button_id=7A4P67BEPT29W" target="_blank">EvoSoft</a></div>'
+st.markdown(footer,unsafe_allow_html=True)

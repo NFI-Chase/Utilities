@@ -8,7 +8,10 @@ st.set_page_config(
    layout="wide",
 #    initial_sidebar_state="expanded",
 )
-
+@st.cache_data
+def local_css(file_name):
+    with open(file_name) as f: st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+local_css(".//resources//style.css")
 # Generate a key for encryption and decryption
 # You must use this key for both encryption and decryption
 # key = Fernet.generate_key()
@@ -81,3 +84,5 @@ elif option == "Decrypt":
             st.image(decrypted_image, caption="Decrypted Image", use_container_width=True)
         except Exception as e:
             st.error(f"Decryption failed: {e}")
+footer='<div class="footer">Developed with <b style="color:red";> ❤ </b> by EvoSoft </br> Sponsor the Creator </br> <a href="https://www.paypal.com/donate/?hosted_button_id=7A4P67BEPT29W" target="_blank">EvoSoft</a></div>'
+st.markdown(footer,unsafe_allow_html=True)
