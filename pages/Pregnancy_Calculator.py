@@ -143,7 +143,7 @@ def highlight_row(row):
         return ['' for _ in row]
 def get_summary_details_dataframe(due_date, pregnancy_duration, last_menstrual_period_date):
     weeks_pregnant = str(calculate_weeks_pregnant(last_menstrual_period_date))
-    data = {"Description": ["Conception Date","Due Date:", "Pregnancy Duration (Days): ", "Days Pregnant: ", "Weeks Pregnant: ", "Weeks until Due Date: ", "Days until Due Date:", "Pregnancy Completed ( % ): "],
+    data = {"Description": ["Last Menstrual Period Date","Due Date:", "Pregnancy Duration (Days): ", "Days Pregnant: ", "Weeks Pregnant: ", "Weeks until Due Date: ", "Days until Due Date:", "Pregnancy Completed ( % ): "],
             "Values": [last_menstrual_period_date.strftime("%Y-%m-%d"),due_date.strftime("%Y-%m-%d"), str(pregnancy_duration), str(calculate_days_preganant(last_menstrual_period_date)), weeks_pregnant, str(calculate_weeks_left(due_date)),str(calculate_days_left(due_date)),str(calculate_percentage_of_pregnancy_completed(last_menstrual_period_date, pregnancy_duration))]}
     df = pd.DataFrame(data)
     return df, weeks_pregnant
