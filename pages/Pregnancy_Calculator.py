@@ -167,7 +167,7 @@ def app():
     st.markdown("*I created this page to help you calculate the due date of your baby. It's a simple tool that you can use to calculate the due date based on the Last Menstrual Period, Conception Date, IVF Transfer Date, or Due Date.*") 
     st.markdown("*The aquiracy of the due date calculation is based on the average pregnancy duration of 280 days. The pregnancy duration can vary from 266 to 294 days.*")
     st.markdown("*Please validate the due date with your healthcare provider, as this tool is for informational purposes only.*")
-    st.markdown("*Feel free to call this page with some prefilled data to get results easier eg: https:// ...... /Pregnancy_Calculator?calculate_by_option=IVF Transfer Date&date=2024/08/04&embryo=Day 05*")
+    st.markdown("*Feel free to call this page with some prefilled data to get results easier eg: https:// ...... /Pregnancy_Calculator?calculate_by_option=IVF Transfer Date&date=2024/08/04&embryo=Day 5*")
     pregnancy_duration = 280
     radiobutton_calculate_by_options = ["Last Menstrual Period (Start Date)", "Conception Date", "IVF Transfer Date", "Due Date"]
     if query_parms_calculate_by_option:
