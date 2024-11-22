@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono&display=swap');
+.footer {
+    font-size:9px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #0E1117;
+    color: white;
+    text-align: center;
+}

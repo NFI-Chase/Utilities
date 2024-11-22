@@ -11,6 +11,10 @@ st.set_page_config(
    layout="wide",
 #    initial_sidebar_state="expanded",
 )
+@st.cache_data
+def local_css(file_name):
+    with open(file_name) as f: st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+local_css(".//resources//style.css")
 def make_donut(input_response, input_text, input_color):
   chart_color = ['#27AE60', '#781F16']
   source = pd.DataFrame({
@@ -46,7 +50,7 @@ def make_donut(input_response, input_text, input_color):
   return plot_bg + plot + text
 @st.cache_data
 def load_csv_data():
-    df = pd.read_csv(".//additional//detailed_pregnancy_weeks_with_symptoms.csv")
+    df = pd.read_csv(".//resources//detailed_pregnancy_weeks_with_symptoms.csv")
     df.fillna('', inplace=True)
     df = df.astype(str)
     return df
@@ -243,4 +247,6 @@ def app():
         st.header("Current Week Details")
         current_week_details = get_current_week_details(weeks_pregnant)
         st.dataframe(current_week_details, use_container_width=True)
+        footer='<div class="footer">Developed with <b style="color:red";> ❤ </b> by Michael Strydom </br> Sponsor the Creator </br> <a href="https://paypal.me/michaelericstrydom" target="_blank">Michael Strydom</a></div>'
+        st.markdown(footer,unsafe_allow_html=True)
 app()
