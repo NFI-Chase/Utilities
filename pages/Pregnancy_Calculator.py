@@ -243,9 +243,13 @@ def app():
                 st.altair_chart(make_donut(calculate_percentage_of_pregnancy_completed(last_menstral_date, pregnancy_duration), 'Pregnancy Precentage Completed', 'red'), use_container_width=True)
         week_dates= create_pregnancy_timeline(last_menstral_date.strftime("%Y-%m-%d"), due_date.strftime("%Y-%m-%d"))
         st.header("Your Journey")
-        st.dataframe(week_dates.style.apply(highlight_row, axis=1), hide_index=True, height=1475, use_container_width=True)
+        selected_row = st.dataframe(week_dates.style.apply(highlight_row, axis=1), selection_mode=["single-row"], hide_index=True, height=1475, use_container_width=True,on_select="rerun")
         st.header("Current Week Details")
-        current_week_details = get_current_week_details(weeks_pregnant)
+        if selected_row.selection.rows:	
+            st.write("Selected data: ", selected_row.selection.rows[0])
+            current_week_details = get_current_week_details(str(selected_row.selection.rows[0]))
+        else:
+            current_week_details = get_current_week_details(weeks_pregnant)
         st.dataframe(current_week_details, use_container_width=True)
         footer='<div class="footer">Developed with <b style="color:red";> ❤ </b> by EvoSoft </br> Sponsor the Creator </br> <a href="https://www.paypal.com/donate/?hosted_button_id=7A4P67BEPT29W" target="_blank">EvoSoft</a></div>'
         st.markdown(footer,unsafe_allow_html=True)
