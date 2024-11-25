@@ -243,7 +243,13 @@ def app():
                 st.altair_chart(make_donut(calculate_percentage_of_pregnancy_completed(last_menstral_date, pregnancy_duration), 'Pregnancy Precentage Completed', 'red'), use_container_width=True)
         week_dates= create_pregnancy_timeline(last_menstral_date.strftime("%Y-%m-%d"), due_date.strftime("%Y-%m-%d"))
         st.header("Your Journey")
-        selected_row = st.dataframe(week_dates.style.apply(highlight_row, axis=1), selection_mode=["single-row"], hide_index=True, height=1475, use_container_width=True,on_select="rerun")
+        selected_row = st.dataframe(week_dates.style.apply(highlight_row, axis=1), selection_mode=["single-row"], hide_index=True, height=1475, use_container_width=True,on_select="rerun",
+                        column_config={
+                            "Week Number": st.column_config.Column("Week Number", help="Pregancy Week Journey", width=1),
+                            "Start Date": st.column_config.Column("Start Date", help="Start Date Of Pregnancy Week", width=1),
+                            "End Date": st.column_config.Column("End Date", help="End Date Of Pregnancy Week", width=1),
+                            "Important Milestones": st.column_config.Column("Important Milestones", help="Important Milestones As Per Mormal Pregnancy", width=1),
+                            "Current Week": st.column_config.Column("Current Week", help="Current Week You Are In", width=1)})
         st.header("Current Week Details")
         if selected_row.selection.rows:	
             current_week_details = get_current_week_details(str(selected_row.selection.rows[0]))
