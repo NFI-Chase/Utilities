@@ -246,7 +246,6 @@ def app():
         selected_row = st.dataframe(week_dates.style.apply(highlight_row, axis=1), selection_mode=["single-row"], hide_index=True, height=1475, use_container_width=True,on_select="rerun")
         st.header("Current Week Details")
         if selected_row.selection.rows:	
-            st.write("Selected data: ", selected_row.selection.rows[0])
             current_week_details = get_current_week_details(str(selected_row.selection.rows[0]))
         else:
             current_week_details = get_current_week_details(weeks_pregnant)
