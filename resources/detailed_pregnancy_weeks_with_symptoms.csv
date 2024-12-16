@@ -1,49 +1,50 @@
-﻿Week Number,Description,Baby Size (cm),Baby Weight (g),Baby Size Comparison,Baby Size Information,Mother's Body Changes,Common Symptoms,Important Milestones
-1,"Fertilization occurs, and the zygote forms.",0.1,0,No Comparison,,Nothing yet,Not technically pregnant yet.,Trimester 1 Starts
-2,The zygote becomes a blastocyst and implants in the uterine wall.,0.2,0,No Comparison,,Hormonal changes begin as the body prepares for pregnancy.,Not technically pregnant yet.,
-3,"The embryo starts to form, and the placenta begins to develop.",0.3,0,No Comparison,,Implantation bleeding may occur; hormone levels rise.,Implantation bleeding.,Baby conceived
-4,"The neural tube closes, and the heart starts to beat.",0.4,0,Poppy Seed,,Morning sickness and fatigue are common.,Morning sickness.,Pregnancy test positive
-5,The embryo's major organs and structures begin to form.,0.5,0,Apple Seed,,Breast tenderness and frequent urination begin.,Breast tenderness and frequent urination.,
-6,The embryo's facial features start to develop.,0.6,0,Sweet Pea,,Increased blood volume; hormonal changes continue.,Increased blood volume and hormonal changes.,Heartbeat detectable by ultrasound
-7,The embryo's limbs and fingers begin to form.,1.3,1,Blueberry,,The uterus expands; weight gain may start.,Uterus expands and weight gain may start.,Heartbeat detectable by ultrasound
-8,The embryo's major organs continue to develop.,1.6,1,Raspberry,Baby’s measurement is from crown to rump,Increased appetite; possible food cravings.,Increased appetite and possible food cravings.,
-9,"The embryo becomes a fetus, and the tail disappears.",2.3,2,Cherry,Baby’s measurement is from crown to rump,The belly starts to show; skin changes may occur.,Belly starts to show and skin changes may occur.,
-10,The fetus's vital organs are fully formed and functioning.,3.1,4,Kumquat,Baby’s measurement is from crown to rump,Increased energy levels; reduced morning sickness.,Increased energy levels and reduced morning sickness.,
-11,The fetus's genitals begin to develop.,4.1,7,Fig,Baby’s measurement is from crown to rump,The belly continues to grow; mother may feel fetal movements.,Belly continues to grow and mother may feel fetal movements.,
-12,The fetus's fingers and toes are fully formed.,5.4,14,Lime,Baby’s measurement is from crown to rump,Increased blood flow; possible varicose veins.,Increased blood flow and possible varicose veins.,Trimester 1 Ends
-13,The fetus's bones start to harden.,7.4,23,Peapod,Baby’s measurement is from crown to rump,Mother may experience back pain; leg cramps.,Back pain and leg cramps.,Trimester 2 Starts. Miscarriage risk decreases
-14,The fetus's hair and eyebrows begin to grow.,8.7,43,Lemon,Baby’s measurement is from crown to rump,Belly becomes more prominent; stretch marks may appear.,Belly becomes more prominent and stretch marks may appear.,
-15,The fetus can make facial expressions.,10.1,70,Apple,Baby’s measurement is from crown to rump,Mother may experience shortness of breath; heartburn.,Shortness of breath and heartburn.,
-16,"The fetus's eyes can move, and it can hear sounds.",11.6,100,Avocado,Baby’s measurement is from crown to rump,Belly continues to grow; mother may feel Braxton Hicks contractions.,Belly continues to grow and mother may feel Braxton Hicks contractions.,
-17,The fetus's lungs continue to develop.,13,140,Turnip,Baby’s measurement is from crown to rump,Mother may experience swelling in hands and feet.,Swelling in hands and feet.,
+﻿Week Number,Description,Baby Size (cm),Baby Weight (g),Baby Size Comparison,Baby Size Information,Mother's Body Changes,Common Symptoms,Important Milestones,Pregnancy Completed %
+0,"Fertilization occurs, and the zygote forms.",0.1,0,No Comparison,,Nothing yet,Not technically pregnant yet.,Trimester 1 Starts,0.0% - 2.5%
+1,"Fertilization occurs, and the zygote forms.",0.1,0,No Comparison,,Nothing yet,Not technically pregnant yet.,,2.5% - 5.0%
+2,The zygote becomes a blastocyst and implants in the uterine wall.,0.2,0,No Comparison,,Hormonal changes begin as the body prepares for pregnancy.,Not technically pregnant yet.,,5.0% - 7.5%
+3,"The embryo starts to form, and the placenta begins to develop.",0.3,0,No Comparison,,Implantation bleeding may occur; hormone levels rise.,Implantation bleeding.,Baby conceived,7.5% - 10.0%
+4,"The neural tube closes, and the heart starts to beat.",0.4,0,Poppy Seed,,Morning sickness and fatigue are common.,Morning sickness.,Pregnancy test positive,10.0% - 12.5%
+5,The embryo's major organs and structures begin to form.,0.5,0,Apple Seed,,Breast tenderness and frequent urination begin.,Breast tenderness and frequent urination.,,12.5% - 15.0%
+6,The embryo's facial features start to develop.,0.6,0,Sweet Pea,,Increased blood volume; hormonal changes continue.,Increased blood volume and hormonal changes.,Heartbeat detectable by ultrasound,15.0% - 17.5%
+7,The embryo's limbs and fingers begin to form.,1.3,1,Blueberry,,The uterus expands; weight gain may start.,Uterus expands and weight gain may start.,Heartbeat detectable by ultrasound,17.5% - 20.0%
+8,The embryo's major organs continue to develop.,1.6,1,Raspberry,Baby’s measurement is from crown to rump,Increased appetite; possible food cravings.,Increased appetite and possible food cravings.,,20.0% - 22.5%
+9,"The embryo becomes a fetus, and the tail disappears.",2.3,2,Cherry,Baby’s measurement is from crown to rump,The belly starts to show; skin changes may occur.,Belly starts to show and skin changes may occur.,,22.5% - 25.0%
+10,The fetus's vital organs are fully formed and functioning.,3.1,4,Kumquat,Baby’s measurement is from crown to rump,Increased energy levels; reduced morning sickness.,Increased energy levels and reduced morning sickness.,,25.0% - 27.5%
+11,The fetus's genitals begin to develop.,4.1,7,Fig,Baby’s measurement is from crown to rump,The belly continues to grow; mother may feel fetal movements.,Belly continues to grow and mother may feel fetal movements.,,27.5% - 30.0%
+12,The fetus's fingers and toes are fully formed.,5.4,14,Lime,Baby’s measurement is from crown to rump,Increased blood flow; possible varicose veins.,Increased blood flow and possible varicose veins.,Trimester 1 Ends,30.0% - 32.5%
+13,The fetus's bones start to harden.,7.4,23,Peapod,Baby’s measurement is from crown to rump,Mother may experience back pain; leg cramps.,Back pain and leg cramps.,Trimester 2 Starts. Miscarriage risk decreases,32.5% - 35.0%
+14,The fetus's hair and eyebrows begin to grow.,8.7,43,Lemon,Baby’s measurement is from crown to rump,Belly becomes more prominent; stretch marks may appear.,Belly becomes more prominent and stretch marks may appear.,,35.0% - 37.5%
+15,The fetus can make facial expressions.,10.1,70,Apple,Baby’s measurement is from crown to rump,Mother may experience shortness of breath; heartburn.,Shortness of breath and heartburn.,,37.5% - 40.0%
+16,"The fetus's eyes can move, and it can hear sounds.",11.6,100,Avocado,Baby’s measurement is from crown to rump,Belly continues to grow; mother may feel Braxton Hicks contractions.,Belly continues to grow and mother may feel Braxton Hicks contractions.,,40.0% - 42.5%
+17,The fetus's lungs continue to develop.,13,140,Turnip,Baby’s measurement is from crown to rump,Mother may experience swelling in hands and feet.,Swelling in hands and feet.,,42.5% - 45.0%
 18,The fetus's digestive system is fully formed.,14.2,190,Bell Pepper,Baby’s measurement is from crown to rump,Mother may feel more tired; difficulty sleeping.,Mother may feel more tired and have difficulty sleeping.,"Baby begins making noticeable
 movements, can hear sounds,
-and gender can be found out."
+and gender can be found out.",45.0% - 47.5%
 19,The fetus's skin is covered in a protective coating called vernix.,15.3,240,Heirloom Tomato,Baby’s measurement is from crown to rump,Belly continues to grow; mother may experience pelvic pain.,Belly continues to grow and mother may experience pelvic pain.,"Baby begins making noticeable
 movements, can hear sounds,
-and gender can be found out."
+and gender can be found out.",47.5% - 50.0%
 20,The fetus's movements become more coordinated.,25.6,300,Banana,Baby’s measurement is from crown to heel,Increased vaginal discharge.,Increased vaginal discharge.,"Baby begins making noticeable
 movements, can hear sounds,
-and gender can be found out."
+and gender can be found out.",50.0% - 52.5%
 21,The fetus's bone marrow starts making blood cells.,26.7,360,Carrot,Baby’s measurement is from crown to heel,More frequent fetal movements.,More frequent fetal movements.,"Baby begins making noticeable
 movements, can hear sounds,
-and gender can be found out."
-22,The fetus's taste buds are developed.,27.8,430,Spaghetti Squash,Baby’s measurement is from crown to heel,Increased back pain; difficulty moving.,Increased back pain and difficulty moving.,
-23,"The fetus's lungs produce surfactant, which helps them expand after birth.",28.9,501,Large Mango,Baby’s measurement is from crown to heel,Mother may feel more tired; difficulty sleeping.,Mother may feel more tired and have difficulty sleeping.,Premature baby may survive
-24,The fetus's brain is rapidly developing.,30,600,Ear of Corn,Baby’s measurement is from crown to heel,Increased heartburn and indigestion.,Increased heartburn and indigestion.,
-25,"The fetus's eyes can open and close, and it can respond to light.",34.6,660,Rutabaga,Baby’s measurement is from crown to heel,More frequent fetal movements.,More frequent fetal movements.,
-26,The fetus's immune system is developing.,35.6,760,Scallion,Baby’s measurement is from crown to heel,Increased swelling in hands and feet.,Increased swelling in hands and feet.,
-27,The fetus's lungs are fully developed but not yet mature.,36.6,875,Cauliflower,Baby’s measurement is from crown to heel,Mother may feel more tired; difficulty sleeping.,Mother may feel more tired and have difficulty sleeping.,Trimester 2 Ends. Baby can breathe
-28,The fetus gains weight rapidly.,37.6,1005,Eggplant,Baby’s measurement is from crown to heel,Increased back pain; difficulty moving.,Increased back pain and difficulty moving.,Trimester 3 Starts
-29,The fetus's brain continues to develop rapidly.,38.6,1153,Butternut Squash,Baby’s measurement is from crown to heel,More frequent fetal movements.,More frequent fetal movements.,
-30,The fetus's bones are fully developed but still soft.,39.9,1319,Cucumber,Baby’s measurement is from crown to heel,Increased heartburn and indigestion.,Increased heartburn and indigestion.,
-31,The fetus moves into a head-down position in preparation for birth.,41.1,1502,Pineapple,Baby’s measurement is from crown to heel,Mother may feel more tired; difficulty sleeping.,Mother may feel more tired and have difficulty sleeping.,
-32,The fetus gains more weight and body fat.,42.4,1702,Squash,Baby’s measurement is from crown to heel,Increased swelling in hands and feet.,Increased swelling in hands and feet.,
-33,The fetus practices breathing movements.,43.7,1918,Durian,Baby’s measurement is from crown to heel,More frequent fetal movements.,More frequent fetal movements.,
-34,The fetus's skin becomes less wrinkled as it gains more fat.,45,2146,Cantaloupe,Baby’s measurement is from crown to heel,Increased back pain; difficulty moving.,Increased back pain and difficulty moving.,
-35,The fetus's brain and nervous system are fully developed.,46.2,2383,Honeydew Melon,Baby’s measurement is from crown to heel,Mother may feel more tired; difficulty sleeping.,Mother may feel more tired and have difficulty sleeping.,
-36,The fetus continues to gain weight and prepare for birth.,47.4,2622,Romaine Lettuce,Baby’s measurement is from crown to heel,Increased heartburn and indigestion.,Increased heartburn and indigestion.,
-37,The fetus moves lower into the pelvis in preparation for birth.,48.6,2859,Swiss Chard,Baby’s measurement is from crown to heel,More frequent fetal movements.,More frequent fetal movements.,
-38,The fetus is considered full-term at 37 weeks and can be born any day now.,49.8,3083,Leek,Baby’s measurement is from crown to heel,"Increased swelling in hands and feet.  Increased pelvic pressure as the baby moves lower, frequent urination, and possible Braxton Hicks contractions.","Increased swelling in hands and feet, difficulty sleeping, and more frequent fetal movements.",Full Term
-39,The placenta provides antibodies to the fetus for protection after birth.,50.7,3288,Mini Watermelon,Baby’s measurement is from crown to heel,Mother may feel more tired; difficulty sleeping.,Mother may feel more tired and have difficulty sleeping,Full Term
-40,Labor may begin at any time as the body prepares for childbirth.,51.2,3462,Pumpkin,Baby’s measurement is from crown to heel,Increased back pain; difficulty moving.,Increased back pain and difficulty moving.,Trimester 3 Ends. Full Term
+and gender can be found out.",52.5% - 55.0%
+22,The fetus's taste buds are developed.,27.8,430,Spaghetti Squash,Baby’s measurement is from crown to heel,Increased back pain; difficulty moving.,Increased back pain and difficulty moving.,,55.0% - 57.5%
+23,"The fetus's lungs produce surfactant, which helps them expand after birth.",28.9,501,Large Mango,Baby’s measurement is from crown to heel,Mother may feel more tired; difficulty sleeping.,Mother may feel more tired and have difficulty sleeping.,Premature baby may survive,57.5% - 60.0%
+24,The fetus's brain is rapidly developing.,30,600,Ear of Corn,Baby’s measurement is from crown to heel,Increased heartburn and indigestion.,Increased heartburn and indigestion.,,60.0% - 62.5%
+25,"The fetus's eyes can open and close, and it can respond to light.",34.6,660,Rutabaga,Baby’s measurement is from crown to heel,More frequent fetal movements.,More frequent fetal movements.,,62.5% - 65.0%
+26,The fetus's immune system is developing.,35.6,760,Scallion,Baby’s measurement is from crown to heel,Increased swelling in hands and feet.,Increased swelling in hands and feet.,,65.0% - 67.5%
+27,The fetus's lungs are fully developed but not yet mature.,36.6,875,Cauliflower,Baby’s measurement is from crown to heel,Mother may feel more tired; difficulty sleeping.,Mother may feel more tired and have difficulty sleeping.,Trimester 2 Ends. Baby can breathe,67.5% - 70.0%
+28,The fetus gains weight rapidly.,37.6,1005,Eggplant,Baby’s measurement is from crown to heel,Increased back pain; difficulty moving.,Increased back pain and difficulty moving.,Trimester 3 Starts,70.0% - 72.5%
+29,The fetus's brain continues to develop rapidly.,38.6,1153,Butternut Squash,Baby’s measurement is from crown to heel,More frequent fetal movements.,More frequent fetal movements.,,72.5% - 75.0%
+30,The fetus's bones are fully developed but still soft.,39.9,1319,Cucumber,Baby’s measurement is from crown to heel,Increased heartburn and indigestion.,Increased heartburn and indigestion.,,75.0% - 77.5%
+31,The fetus moves into a head-down position in preparation for birth.,41.1,1502,Pineapple,Baby’s measurement is from crown to heel,Mother may feel more tired; difficulty sleeping.,Mother may feel more tired and have difficulty sleeping.,,77.5% - 80.0%
+32,The fetus gains more weight and body fat.,42.4,1702,Squash,Baby’s measurement is from crown to heel,Increased swelling in hands and feet.,Increased swelling in hands and feet.,,80.0% - 82.5%
+33,The fetus practices breathing movements.,43.7,1918,Durian,Baby’s measurement is from crown to heel,More frequent fetal movements.,More frequent fetal movements.,,82.5% - 85.0%
+34,The fetus's skin becomes less wrinkled as it gains more fat.,45,2146,Cantaloupe,Baby’s measurement is from crown to heel,Increased back pain; difficulty moving.,Increased back pain and difficulty moving.,,85.0% - 87.5%
+35,The fetus's brain and nervous system are fully developed.,46.2,2383,Honeydew Melon,Baby’s measurement is from crown to heel,Mother may feel more tired; difficulty sleeping.,Mother may feel more tired and have difficulty sleeping.,,87.5% - 90.0%
+36,The fetus continues to gain weight and prepare for birth.,47.4,2622,Romaine Lettuce,Baby’s measurement is from crown to heel,Increased heartburn and indigestion.,Increased heartburn and indigestion.,,90.0% - 92.5%
+37,The fetus moves lower into the pelvis in preparation for birth.,48.6,2859,Swiss Chard,Baby’s measurement is from crown to heel,More frequent fetal movements.,More frequent fetal movements.,,92.5% - 95.0%
+38,The fetus is considered full-term at 37 weeks and can be born any day now.,49.8,3083,Leek,Baby’s measurement is from crown to heel,"Increased swelling in hands and feet.  Increased pelvic pressure as the baby moves lower, frequent urination, and possible Braxton Hicks contractions.","Increased swelling in hands and feet, difficulty sleeping, and more frequent fetal movements.",Full Term,95.0% - 97.5%
+39,The placenta provides antibodies to the fetus for protection after birth.,50.7,3288,Mini Watermelon,Baby’s measurement is from crown to heel,Mother may feel more tired; difficulty sleeping.,Mother may feel more tired and have difficulty sleeping,Full Term,97.5% - 99.0%
+40,Labor may begin at any time as the body prepares for childbirth.,51.2,3462,Pumpkin,Baby’s measurement is from crown to heel,Increased back pain; difficulty moving.,Increased back pain and difficulty moving.,Trimester 3 Ends. Full Term,99.1% - 100%

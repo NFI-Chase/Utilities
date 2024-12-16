@@ -157,9 +157,10 @@ def summary_details_component(due_date, pregnancy_duration, last_menstrual_perio
         with plot:
             st.altair_chart(make_donut(calculate_percentage_of_pregnancy_completed(last_menstrual_period_date, pregnancy_duration), 'Pregnancy Precentage Completed', 'red'), use_container_width=True)
 def get_current_week_details(weeks_pregnant):
-    weeks_pregnant_int = round(float(weeks_pregnant))
-    if weeks_pregnant_int == 0:
-        weeks_pregnant_int = 1
+    # weeks_pregnant_int = round(float(weeks_pregnant))
+    weeks_pregnant_int = int(float(weeks_pregnant))
+    # if weeks_pregnant_int == 0:
+    #     weeks_pregnant_int = 1
     return get_week_details(pregnancy_weeks(), weeks_pregnant_int)
 def app():
     query_parms_calculate_by_option = st.query_params["calculate_by_option"] if "calculate_by_option" in st.query_params else None
@@ -250,7 +251,7 @@ def app():
                             "End Date": st.column_config.Column("End Date", help="End Date Of Pregnancy Week", width=1),
                             "Important Milestones": st.column_config.Column("Important Milestones", help="Important Milestones As Per Mormal Pregnancy", width=1),
                             "Current Week": st.column_config.Column("Current Week", help="Current Week You Are In", width=1)})
-        st.header("Current Week Details")
+        st.header("Selected Week Details")
         if selected_row.selection.rows:	
             current_week_details = get_current_week_details(str(selected_row.selection.rows[0]))
         else:
