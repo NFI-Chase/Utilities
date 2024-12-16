@@ -4,7 +4,7 @@ import altair as alt
 from datetime import datetime, timedelta
 import pandas as pd
 import numpy as np
-        
+import requests 
 st.set_page_config(
    page_title="Pregnancy Calculator",
    page_icon="🤰",
@@ -159,9 +159,22 @@ def summary_details_component(due_date, pregnancy_duration, last_menstrual_perio
 def get_current_week_details(weeks_pregnant):
     # weeks_pregnant_int = round(float(weeks_pregnant))
     weeks_pregnant_int = int(float(weeks_pregnant))
-    # if weeks_pregnant_int == 0:
-    #     weeks_pregnant_int = 1
+    if weeks_pregnant_int == 0:
+        weeks_pregnant_int = 1
     return get_week_details(pregnancy_weeks(), weeks_pregnant_int)
+@st.cache_data
+def get_img_from_api(img):
+    if img == "No Comparison":
+        img = "mustardseed"
+    params = {"key": st.secrets["picbay_image_api_key"], "q": img.strip(), "lang" : "en","image_type": "illustration", "safesearch": "true", "category": "food", "orientation": "horizontal", "page": 1, "per_page": 3}
+    data = requests.get(st.secrets["picbay_image_api_url"], params).json()
+    if data:
+        if (data["totalHits"]) > 0:
+            st.image(data["hits"][0]["webformatURL"], width = 400)
+        else:
+            st.write("No image found")
+    else:
+        st.write("No image found")
 def app():
     query_parms_calculate_by_option = st.query_params["calculate_by_option"] if "calculate_by_option" in st.query_params else None
     query_parms_date = st.query_params["date"] if "date" in st.query_params else None
@@ -251,12 +264,19 @@ def app():
                             "End Date": st.column_config.Column("End Date", help="End Date Of Pregnancy Week", width=1),
                             "Important Milestones": st.column_config.Column("Important Milestones", help="Important Milestones As Per Mormal Pregnancy", width=1),
                             "Current Week": st.column_config.Column("Current Week", help="Current Week You Are In", width=1)})
-        st.header("Selected Week Details")
-        if selected_row.selection.rows:	
-            current_week_details = get_current_week_details(str(selected_row.selection.rows[0]))
-        else:
-            current_week_details = get_current_week_details(weeks_pregnant)
-        st.dataframe(current_week_details, use_container_width=True)
+        with data_container:
+            data, image = st.columns(2)
+            with data:
+                st.header("Selected Week Details")
+                if selected_row.selection.rows:	
+                    current_week_details = get_current_week_details(str(selected_row.selection.rows[0]))
+                else:
+                    current_week_details = get_current_week_details(weeks_pregnant)
+                st.dataframe(current_week_details, use_container_width=True)
+            with image:
+                st.header("Baby Size Comparison")
+                get_img_from_api(current_week_details["Baby Size Comparison"])
+        
         footer='<div class="footer">Developed with <b style="color:red";> ❤ </b> by EvoSoft </br> Sponsor the Creator </br> <a href="https://www.paypal.com/donate/?hosted_button_id=7A4P67BEPT29W" target="_blank">EvoSoft</a></div>'
         st.markdown(footer,unsafe_allow_html=True)
 app()
