@@ -143,9 +143,11 @@ def highlight_row(row):
         return ['' for _ in row]
 def get_summary_details_dataframe(due_date, pregnancy_duration, last_menstrual_period_date):
     weeks_pregnant = str(calculate_weeks_pregnant(last_menstrual_period_date))
-    months_pregnant = str(round(float(weeks_pregnant) / 4.345))  # Approximate conversion from weeks to months
+    months_pregnant = str(float(weeks_pregnant) / 4.345)  # Approximate conversion from weeks to months
+    months_pregnant_round = str(round(float(weeks_pregnant) / 4.345))  # Approximate conversion from weeks to months
     weeks_left = calculate_weeks_left(due_date)
-    months_left = str(round(float(weeks_left) / 4.345))
+    months_left = str(float(weeks_left) / 4.345)
+    months_left_round = str(round(float(weeks_left) / 4.345))
     data = {
         "Description": [
             "Last Menstrual Period Date",
@@ -165,9 +167,9 @@ def get_summary_details_dataframe(due_date, pregnancy_duration, last_menstrual_p
             str(pregnancy_duration),
             str(calculate_days_preganant(last_menstrual_period_date)),
             weeks_pregnant,
-            months_pregnant,
+            months_left_round + "("months_pregnant + ")",
             str(weeks_left),
-            months_left,
+            months_left_round + "("months_left + ")",
             str(calculate_days_left(due_date)),
             str(calculate_percentage_of_pregnancy_completed(last_menstrual_period_date, pregnancy_duration))
         ]
