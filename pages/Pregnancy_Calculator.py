@@ -233,7 +233,7 @@ def app():
             last_menstral_date = st.date_input("Date of Last Menstrual Period", value=query_parms_date)
         else:
             last_menstral_date = st.date_input("Date of Last Menstrual Period")
-        st.session_state.quick_url += f"&date={last_menstral_date}"
+        st.session_state.quick_url += f"&date={last_menstral_date.strftime('%Y/%m/%d')}"
         due_date = calculate_due_date_by_last_menstrual_period(last_menstral_date, pregnancy_duration)
         if last_menstral_date > datetime.now().date():
             st.error("The date of the last menstrual period cannot be in the future.")
@@ -246,7 +246,7 @@ def app():
             date_of_conception = st.date_input("Date of Conception", value=query_parms_date)
         else:
             date_of_conception = st.date_input("Date of Conception")
-        st.session_state.quick_url += f"&date={date_of_conception}"
+        st.session_state.quick_url += f"&date={date_of_conception.strftime('%Y/%m/%d')}"
         due_date = date_of_conception + timedelta(days=266)
         last_menstral_date = date_of_conception - timedelta(days=14)
         if last_menstral_date > datetime.now().date():
@@ -260,7 +260,7 @@ def app():
             date_of_ivf_transfer = st.date_input("Date of IVF Transfer", value=query_parms_date)    
         else:
             date_of_ivf_transfer = st.date_input("Date of IVF Transfer")
-        st.session_state.quick_url += f"&date={date_of_ivf_transfer}"
+        st.session_state.quick_url += f"&date={date_of_ivf_transfer.strftime('%Y/%m/%d')}"
         radiobutton_embryo_stage_options = ["Day 3", "Day 5"]
         if query_parms_embryo:
             radiobutton_embryo = st.radio("Embryo Stage days:", radiobutton_embryo_stage_options, index=radiobutton_embryo_stage_options.index(query_parms_embryo))
