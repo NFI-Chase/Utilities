@@ -283,7 +283,7 @@ def app():
             st.error("The due date cannot be in the past.")
             return
         due_date = date_of_due_date
-        st.session_state.quick_url += f"&date={due_date}"
+        st.session_state.quick_url += f"&date={due_date.strftime('%Y/%m/%d')}"
         last_menstral_date =calculate_last_menstrual_period_by_due_date(due_date, pregnancy_duration)
     if due_date and pregnancy_duration and last_menstral_date:
         st.header("Pregnancy Summary")
