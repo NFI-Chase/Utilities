@@ -203,9 +203,12 @@ def get_img_from_api(img):
     else:
         st.write("No image found")
 def app():
-    st.session_state.calculate_by_option = ""
-    st.session_state.date = ""
-    st.session_state.embryo = ""
+    if "calculate_by_option" not in st.session_state:
+        st.session_state.calculate_by_option = ""
+    if "date" not in st.session_state:
+        st.session_state.date = ""
+    if "embryo" not in st.session_state:
+        st.session_state.embryo = ""
     query_parms_calculate_by_option = st.query_params["calculate_by_option"] if "calculate_by_option" in st.query_params else None
     query_parms_date = st.query_params["date"] if "date" in st.query_params else None
     if query_parms_date:
@@ -223,6 +226,8 @@ def app():
         radiobutton_calculate_by = st.radio("Calculation Option:", radiobutton_calculate_by_options, index=radiobutton_calculate_by_options.index(query_parms_calculate_by_option))
     else:
         radiobutton_calculate_by = st.radio("Calculation Option:", radiobutton_calculate_by_options)
+    if radiobutton_calculate_by != "IVF Transfer Date":
+        st.session_state.embryo = ""
     st.session_state.calculate_by_option = radiobutton_calculate_by
     if radiobutton_calculate_by == "Last Menstrual Period (Start Date)":    
         if query_parms_date:
