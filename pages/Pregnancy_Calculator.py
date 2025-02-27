@@ -214,7 +214,9 @@ def app():
     if query_parms_date:
         query_parms_date = datetime.strptime(query_parms_date, "%Y/%m/%d")
     query_parms_embryo = st.query_params["embryo"] if "embryo" in st.query_params else None
-    if not qick_url:
+    if qick_url:
+        pass
+    else:
         qick_url = ""
     st.title("Pregnancy Calculator")
     st.markdown("*I created this page to help you calculate the due date of your baby. It's a simple tool that you can use to calculate the due date based on the Last Menstrual Period, Conception Date, IVF Transfer Date, or Due Date.*") 
