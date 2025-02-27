@@ -217,8 +217,7 @@ def app():
     st.title("Pregnancy Calculator")
     st.markdown("*I created this page to help you calculate the due date of your baby. It's a simple tool that you can use to calculate the due date based on the Last Menstrual Period, Conception Date, IVF Transfer Date, or Due Date.*") 
     st.markdown("*The aquiracy of the due date calculation is based on the average pregnancy duration of 280 days. The pregnancy duration can vary from 266 to 294 days.*")
-    st.markdown("*Please validate the due date with your healthcare provider, as this tool is for informational purposes only.*")
-    qick_url = f"?calculate_by_option={st.session_state.calculate_by_option}&date={st.session_state.date}&embryo={st.session_state.embryo}" 
+    st.markdown("*Please validate the due date with your healthcare provider, as this tool is for informational purposes only.*") 
     st.markdown(f"*Feel free to call this page with some prefilled data to get results easier eg: https:// ...... /Pregnancy_Calculator{qick_url}*")
     pregnancy_duration = 280
     radiobutton_calculate_by_options = ["Last Menstrual Period (Start Date)", "Conception Date", "IVF Transfer Date", "Due Date"]
@@ -226,14 +225,13 @@ def app():
         radiobutton_calculate_by = st.radio("Calculation Option:", radiobutton_calculate_by_options, index=radiobutton_calculate_by_options.index(query_parms_calculate_by_option))
     else:
         radiobutton_calculate_by = st.radio("Calculation Option:", radiobutton_calculate_by_options)
-    if radiobutton_calculate_by != "IVF Transfer Date":
-        st.session_state.embryo = ""
-    st.session_state.calculate_by_option = radiobutton_calculate_by
+    qick_url = f"?calculate_by_option={radiobutton_calculate_by}"
     if radiobutton_calculate_by == "Last Menstrual Period (Start Date)":    
         if query_parms_date:
             last_menstral_date = st.date_input("Date of Last Menstrual Period", value=query_parms_date)
         else:
             last_menstral_date = st.date_input("Date of Last Menstrual Period")
+        qick_url += f"&date={last_menstral_date}"
         due_date = calculate_due_date_by_last_menstrual_period(last_menstral_date, pregnancy_duration)
         if last_menstral_date > datetime.now().date():
             st.error("The date of the last menstrual period cannot be in the future.")
@@ -246,6 +244,7 @@ def app():
             date_of_conception = st.date_input("Date of Conception", value=query_parms_date)
         else:
             date_of_conception = st.date_input("Date of Conception")
+        qick_url += f"&date={date_of_conception}"
         due_date = date_of_conception + timedelta(days=266)
         last_menstral_date = date_of_conception - timedelta(days=14)
         if last_menstral_date > datetime.now().date():
@@ -259,12 +258,13 @@ def app():
             date_of_ivf_transfer = st.date_input("Date of IVF Transfer", value=query_parms_date)    
         else:
             date_of_ivf_transfer = st.date_input("Date of IVF Transfer")
+        qick_url += f"&date={date_of_ivf_transfer}"
         radiobutton_embryo_stage_options = ["Day 3", "Day 5"]
         if query_parms_embryo:
             radiobutton_embryo = st.radio("Embryo Stage days:", radiobutton_embryo_stage_options, index=radiobutton_embryo_stage_options.index(query_parms_embryo))
         else:
             radiobutton_embryo = st.radio("Embryo Stage days:", radiobutton_embryo_stage_options)
-        st.session_state.embryo = radiobutton_embryo
+        qick_url += f"&embryo={radiobutton_embryo}"
         due_date, last_menstral_date = calculate_ivf_last_menstrual_period(date_of_ivf_transfer, pregnancy_duration, radiobutton_embryo)
         if last_menstral_date > datetime.now().date():
             st.error("The date of the last menstrual period cannot be in the future.")
@@ -281,6 +281,7 @@ def app():
             st.error("The due date cannot be in the past.")
             return
         due_date = date_of_due_date
+        qick_url += f"&date={due_date}"
         last_menstral_date =calculate_last_menstrual_period_by_due_date(due_date, pregnancy_duration)
     if due_date and pregnancy_duration and last_menstral_date:
         st.header("Pregnancy Summary")
