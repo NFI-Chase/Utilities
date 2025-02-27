@@ -204,7 +204,7 @@ def get_img_from_api(img):
         st.write("No image found")
 def app():
     st.session_state.calculate_by_option = ""
-    st.session_state.last_menstral_date = ""
+    st.session_state.date = ""
     st.session_state.embryo = ""
     query_parms_calculate_by_option = st.query_params["calculate_by_option"] if "calculate_by_option" in st.query_params else None
     query_parms_date = st.query_params["date"] if "date" in st.query_params else None
@@ -215,15 +215,15 @@ def app():
     st.markdown("*I created this page to help you calculate the due date of your baby. It's a simple tool that you can use to calculate the due date based on the Last Menstrual Period, Conception Date, IVF Transfer Date, or Due Date.*") 
     st.markdown("*The aquiracy of the due date calculation is based on the average pregnancy duration of 280 days. The pregnancy duration can vary from 266 to 294 days.*")
     st.markdown("*Please validate the due date with your healthcare provider, as this tool is for informational purposes only.*")
-    qick_url = f"?calculate_by_option={st.session_state.calculate_by_option}&date={st.session_state.last_menstral_date}&embryo={st.session_state.embryo}" 
-    st.markdown(f"*Feel free to call this page with some prefilled data to get results easier eg: https:// ...... /Pregnancy_Calculator{qick_url}5*")
+    qick_url = f"?calculate_by_option={st.session_state.calculate_by_option}&date={st.session_state.date}&embryo={st.session_state.embryo}" 
+    st.markdown(f"*Feel free to call this page with some prefilled data to get results easier eg: https:// ...... /Pregnancy_Calculator{qick_url}*")
     pregnancy_duration = 280
     radiobutton_calculate_by_options = ["Last Menstrual Period (Start Date)", "Conception Date", "IVF Transfer Date", "Due Date"]
     if query_parms_calculate_by_option:
         radiobutton_calculate_by = st.radio("Calculation Option:", radiobutton_calculate_by_options, index=radiobutton_calculate_by_options.index(query_parms_calculate_by_option))
     else:
         radiobutton_calculate_by = st.radio("Calculation Option:", radiobutton_calculate_by_options)
-
+    st.session_state.calculate_by_option = radiobutton_calculate_by
     if radiobutton_calculate_by == "Last Menstrual Period (Start Date)":    
         if query_parms_date:
             last_menstral_date = st.date_input("Date of Last Menstrual Period", value=query_parms_date)
@@ -259,6 +259,7 @@ def app():
             radiobutton_embryo = st.radio("Embryo Stage days:", radiobutton_embryo_stage_options, index=radiobutton_embryo_stage_options.index(query_parms_embryo))
         else:
             radiobutton_embryo = st.radio("Embryo Stage days:", radiobutton_embryo_stage_options)
+        st.session_state.embryo = radiobutton_embryo
         due_date, last_menstral_date = calculate_ivf_last_menstrual_period(date_of_ivf_transfer, pregnancy_duration, radiobutton_embryo)
         if last_menstral_date > datetime.now().date():
             st.error("The date of the last menstrual period cannot be in the future.")
@@ -286,6 +287,7 @@ def app():
                 st.dataframe(df, hide_index=True,use_container_width=True)
             with plot:
                 st.altair_chart(make_donut(calculate_percentage_of_pregnancy_completed(last_menstral_date, pregnancy_duration), 'Pregnancy Precentage Completed', 'red'), use_container_width=True)
+        st.session_state.date = last_menstral_date.strftime("%Y/%m/%d")
         week_dates= create_pregnancy_timeline(last_menstral_date.strftime("%Y-%m-%d"), due_date.strftime("%Y-%m-%d"))
         st.header("Your Journey")
         selected_row = st.dataframe(week_dates.style.apply(highlight_row, axis=1), selection_mode=["single-row"], hide_index=True, height=1475, use_container_width=True,on_select="rerun",
