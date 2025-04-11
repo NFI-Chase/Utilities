@@ -20,9 +20,7 @@
 18,The fetus's digestive system is fully formed.,14.2,190,Bell Pepper,Baby’s measurement is from crown to rump,Mother may feel more tired; difficulty sleeping.,Mother may feel more tired and have difficulty sleeping.,"Baby begins making noticeable
 movements, can hear sounds,
 and gender can be found out.",45.0% - 47.5%
-19,The fetus's skin is covered in a protective coating called vernix.,15.3,240,Heirloom Tomato,Baby’s measurement is from crown to rump,Belly continues to grow; mother may experience pelvic pain.,Belly continues to grow and mother may experience pelvic pain.,"Baby begins making noticeable
-movements, can hear sounds,
-and gender can be found out.",47.5% - 50.0%
+19,The fetus's skin is covered in a protective coating called vernix.,15.3,240,Heirloom Tomato,Baby’s measurement is from crown to rump,Belly continues to grow; mother may experience pelvic pain.,Belly continues to grow and mother may experience pelvic pain.,,47.5% - 50.0%
 20,The fetus's movements become more coordinated.,25.6,300,Banana,Baby’s measurement is from crown to heel,Increased vaginal discharge.,"20 Weeks Pregnant: A Major Milestone  
 
 You're now halfway through your pregnancy! Your baby is about 24 cm long and weighs around 300 grams, moving up to 200 times a day. The 20-week ultrasound may be scheduled or already completed, allowing for a check on development, potential abnormalities, and even revealing the gender—if your baby cooperates.  
@@ -38,9 +36,7 @@ You're now halfway through your pregnancy! Your baby is about 24 cm long and wei
 - Leg cramps, especially at night, are common. Magnesium supplements before bed may help.  
 - Your blood pressure** may fluctuate, but your midwife will monitor it. Reflexology can also ease pregnancy-related discomforts.  
 
-You're on the exciting journey toward meeting your baby—take care and enjoy this special phase!","Baby begins making noticeable
-movements, can hear sounds,
-and gender can be found out.",50.0% - 52.5%
+You're on the exciting journey toward meeting your baby—take care and enjoy this special phase!",,50.0% - 52.5%
 21,The fetus's bone marrow starts making blood cells.,26.7,360,Carrot,Baby’s measurement is from crown to heel,More frequent fetal movements.,"At 21 weeks, you're officially past the halfway mark of your pregnancy! Your baby is now around 27 cm long and weighs 375 grams. While there's still plenty of space in your belly, your baby is getting bigger and will continue to gain weight—almost 10 times more before birth!  
 
 *Your Baby’s Development
@@ -57,9 +53,7 @@ and gender can be found out.",50.0% - 52.5%
 *Strange Dreams? It’s Normal!
 Many expectant mothers have vivid or unsettling dreams about their baby. This is a normal way for your brain to process your fears and prepare you for motherhood.  
 
-You're doing great—keep taking care of yourself and enjoy this special time! 💛","Baby begins making noticeable
-movements, can hear sounds,
-and gender can be found out.",52.5% - 55.0%
+You're doing great—keep taking care of yourself and enjoy this special time! 💛",,52.5% - 55.0%
 22,The fetus's taste buds are developed.,27.8,430,Spaghetti Squash,Baby’s measurement is from crown to heel,Increased back pain; difficulty moving.,"*Your Baby’s Development  
 At 22 weeks, your baby measures about 28.5 cm and weighs 440 grams. Most of the time is spent sleeping, often in a unique fetal position. When you are active, your movements gently rock the baby to sleep, but once you lie down, the baby may wake up due to the lack of motion.  
 
@@ -315,3 +309,5 @@ You might feel impatient or uncomfortable at this stage. If labor hasn’t start
 - A normal delivery can happen anytime from three weeks before to two weeks after your due date.
 - If labor hasn’t started by now, it's considered a post-term pregnancy (serotinity).
 - After birth, your belly may feel soft and stretched. Don’t worry—it’s normal, and with healthy eating and regular exercise, your body will gradually return to shape.",Trimester 3 Ends. Full Term,99.1% - 100%
+41,Late-term pregnancy,54,3800,Pumpkin,"Baby's nails are long, and they may need a manicure after birth. Baby's endocrine system is gearing up for birth.",,"Increased monitoring, possible discussions about labor induction.",Full Term,103%
+42,Post-term pregnancy,56,4100,Watermelon,"Baby's skin may be dry, cracked, or peeling. Baby is more alert and has longer nails and hair.",,"Extra monitoring, likely induction of labor.",Full Term,105%
