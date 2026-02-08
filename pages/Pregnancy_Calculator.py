@@ -209,8 +209,8 @@ def app():
         st.session_state.date = ""
     if "embryo" not in st.session_state:
         st.session_state.embryo = ""
-    if st.query_params["calculate_by_option"]:
-        query_parms_calculate_by_option = st.query_params["calculate_by_option"] if "calculate_by_option" in st.query_params else None
+    
+    query_parms_calculate_by_option = st.query_params["calculate_by_option"] if "calculate_by_option" in st.query_params else None
     query_parms_date = st.query_params["date"] if "date" in st.query_params else None
     if query_parms_date:
         query_parms_date = datetime.strptime(query_parms_date, "%Y/%m/%d")
