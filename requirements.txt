@@ -6,3 +6,4 @@ amzqr
 cryptography
 numpy
 dnspython
+altair<5
