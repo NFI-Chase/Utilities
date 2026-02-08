@@ -1,6 +1,6 @@
 pandas
 altair
-streamlit
+streamlit==1.54.0
 imageio
 amzqr
 cryptography
