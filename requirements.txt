@@ -7,3 +7,4 @@ cryptography
 numpy
 dnspython
 altair<5
+python3-standard-imghdr
